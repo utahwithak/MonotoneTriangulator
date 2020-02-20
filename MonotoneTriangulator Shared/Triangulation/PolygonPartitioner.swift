@@ -16,7 +16,7 @@ struct PolygonPartitioner {
         let queue = polygon.eventPoints.sorted(by: >)
         for i in stride(from: queue.count - 1, through: 0, by: -1) {
             let v = queue[i]
-            switch v.event {
+            switch v.generateEvent() {
             case .Start:
                 handleStart(vertex: v)
             case .End:

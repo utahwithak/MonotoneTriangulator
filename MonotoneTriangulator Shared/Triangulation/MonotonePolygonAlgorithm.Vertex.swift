@@ -70,7 +70,7 @@ extension MonotonePolygonAlgorithm {
             return angle;
         }
 
-        lazy var event: EventType = {
+        func generateEvent() -> EventType {
             let prev = self.outEdge.pair.next.pair.start;
             let next = self.outEdge.end
 
@@ -94,7 +94,7 @@ extension MonotonePolygonAlgorithm {
 
             }
             return .Regular;
-        }()
+        }
 
         func edgeTo(vertext end: Vertex) -> Edge? {
             var runner = outEdge
