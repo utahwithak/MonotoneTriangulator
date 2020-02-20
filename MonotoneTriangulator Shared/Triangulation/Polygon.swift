@@ -113,7 +113,6 @@ struct Polygon {
         var startPoints = [Edge]()
 
         while let start = toVisit.first {
-
             startPoints.append(start)
 
             var runner = start;

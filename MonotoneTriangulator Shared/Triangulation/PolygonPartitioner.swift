@@ -39,13 +39,13 @@ struct PolygonPartitioner {
 
     private mutating func handleEnd(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
         let helper = try helperFor(edge:v.outEdge.pair.next.pair)
-        if helper.event == .Merge {
+        if helper.isMergeVertex {
             Polygon.addDiagonalFrom(start:v, toVertex:helper)
         }
         remove(edge: v.outEdge.pair.next.pair)
     }
 
-    private mutating  func handleSplit(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
+    private mutating func handleSplit(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
         let ej = try edgeOnLeft(of: v)
         Polygon.addDiagonalFrom(start: v, toVertex: try helperFor(edge: ej))
         set(helper: v, for: ej)
@@ -55,14 +55,14 @@ struct PolygonPartitioner {
     private mutating func handleMerge(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
 
         var helper = try helperFor(edge: v.outEdge.pair.next.pair)
-        if helper.event == .Merge {
+        if helper.isMergeVertex {
             Polygon.addDiagonalFrom(start:v, toVertex:helper)
         }
         remove(edge:v.outEdge.pair.next.pair)
 
         let ej = try edgeOnLeft(of: v)
         helper = try helperFor(edge:ej)
-        if helper.event == .Merge {
+        if helper.isMergeVertex {
             Polygon.addDiagonalFrom(start:v, toVertex:helper)
         }
         set(helper: v, for: ej)
@@ -70,7 +70,7 @@ struct PolygonPartitioner {
 
     private mutating func handleLeftSide(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
         let helper = try helperFor(edge: v.outEdge.pair.next.pair)
-        if helper.event == .Merge {
+        if helper.isMergeVertex {
             Polygon.addDiagonalFrom(start:v, toVertex:helper)
         }
         remove(edge: v.outEdge.pair.next.pair)
@@ -80,7 +80,7 @@ struct PolygonPartitioner {
     private mutating func handleRightSide(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
         let ej = try edgeOnLeft(of: v)
         let leftHelper = try helperFor(edge: ej)
-        if leftHelper.event == .Merge {
+        if leftHelper.isMergeVertex {
             Polygon.addDiagonalFrom(start: v, toVertex:leftHelper)
         }
         set(helper: v, for: ej)

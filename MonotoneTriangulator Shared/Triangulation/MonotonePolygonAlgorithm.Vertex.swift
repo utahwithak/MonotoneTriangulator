@@ -43,6 +43,8 @@ extension MonotonePolygonAlgorithm {
 
         var outEdge: Edge!
 
+        var isMergeVertex = false
+
         private func turnAngle(a: Vertex, center b: Vertex, end c: Vertex) -> Double {
             let d1x = b.x - a.x;
             let d1y = b.y - a.y;
@@ -86,6 +88,7 @@ extension MonotonePolygonAlgorithm {
                     return .End;
                 }
                 else if interiorAngle > .pi {
+                    self.isMergeVertex = true
                     return .Merge;
                 }
 
