@@ -151,7 +151,7 @@ struct Polygon {
         return triangles
     }
 
-    func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
+    static func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
 
         let e1 = Edge(origin: v1)
         let e2 = Edge(origin: v2)

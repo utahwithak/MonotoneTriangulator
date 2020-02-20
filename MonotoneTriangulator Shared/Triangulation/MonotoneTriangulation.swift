@@ -17,11 +17,10 @@ class MonotonePolygonAlgorithm {
     }
 
     func triangulate() throws -> [Int] {
-        var partitioner = PolygonPartitioner(polygon: polygon)
+        var partitioner = PolygonPartitioner()
 
-        try partitioner.sweep()
+        let subPolygons = try partitioner.sweep(polygon: polygon)
 
-        let subPolygons = partitioner.monotonePolygons
         var sequence = [MonotonePolygonAlgorithm.Vertex]()
         var leftChain = [MonotonePolygonAlgorithm.Vertex]()
         var rightChain = [MonotonePolygonAlgorithm.Vertex]()
@@ -57,7 +56,7 @@ class MonotonePolygonAlgorithm {
 
                         //inserte into D a diagonal from U to each popped vertex, except the last one
                         if stack.count > 0 {
-                            polygon.addDiagonalFrom(start:u, toVertex:cur)
+                            Polygon.addDiagonalFrom(start:u, toVertex:cur)
                         }
                     }
 
@@ -76,7 +75,7 @@ class MonotonePolygonAlgorithm {
 
                         popped = stack.removeLast()
 
-                        polygon.addDiagonalFrom(start:u, toVertex:popped)
+                        Polygon.addDiagonalFrom(start:u, toVertex:popped)
                     }
                     //push last popped back onto stack, as it is now (or always was) connected to
                     stack.append(popped)
@@ -92,7 +91,7 @@ class MonotonePolygonAlgorithm {
                     let cur = stack.removeLast()
                     //insert into D a diagonal from U to each poped vertex, except the last one
                     if stack.count > 0 {
-                        polygon.addDiagonalFrom(start:sequence.last!, toVertex:cur)
+                        Polygon.addDiagonalFrom(start:sequence.last!, toVertex:cur)
                     }
                 }
 
