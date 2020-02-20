@@ -13,9 +13,9 @@ enum Orientation {
     case CounterClockwise
 }
 
-class Polygon {
+struct Polygon {
 
-    convenience init(points: [Vector2]) {
+    init(points: [Vector2]) {
         var verts = [MonotonePolygonAlgorithm.Vertex]()
 
         let initial = MonotonePolygonAlgorithm.Vertex(point: points[0])
@@ -66,7 +66,7 @@ class Polygon {
         if Polygon.orientationOf(points: points) == .CounterClockwise {
             self.init(startEdge: bridgePair, vertices: verts)
         } else {
-             self.init(startEdge: bridge, vertices: verts)
+            self.init(startEdge: bridge, vertices: verts)
         }
 
         flipOutEdges()

@@ -11,7 +11,8 @@ import SpriteKit
 class GameScene: SKScene {
 
     var points = [Vector2]()
-    
+
+
     fileprivate var spinnyNode : SKShapeNode?
 
     
@@ -42,18 +43,7 @@ class GameScene: SKScene {
             spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
-            
-            #if os(watchOS)
-            // For watch we just periodically create one of these and let it spin
-            // For other platforms we let user touch/mouse events create these
-            spinnyNode.position = CGPoint(x: 0.0, y: 0.0)
-            spinnyNode.strokeColor = SKColor.red
-            self.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: 2.0),
-                                                               SKAction.run({
-                                                                let n = spinnyNode.copy() as! SKShapeNode
-                                                                self.addChild(n)
-                                                               })])))
-            #endif
+
         }
     }
     
@@ -68,11 +58,9 @@ class GameScene: SKScene {
     #endif
 
     func makeSpinny(at pos: CGPoint, color: SKColor) {
-        if let spinny = self.spinnyNode?.copy() as! SKShapeNode? {
-            spinny.position = pos
-            spinny.strokeColor = color
-            self.addChild(spinny)
-        }
+        let node = SKShapeNode(circleOfRadius: 3)
+        node.position = pos
+        addChild(node)
         points.append(Vector2(pos))
 
     }
@@ -132,14 +120,9 @@ extension GameScene {
         //        self.makeSpinny(at: event.location(in: self), color: SKColor.red)
         if points.count > 3 {
             let triangulator = MonotonePolygonAlgorithm(points: points)
-            for point in points {
-                let node = SKShapeNode(circleOfRadius: 3)
-                node.position = point.cgPoint
-                addChild(node)
-            }
+
             do {
                 let triangles = try triangulator.triangulate()
-                print("Tris:\(triangles)")
                 for i in stride(from: 0, to: triangles.count, by: 3) where i + 2 < triangles.count && triangles[i + 2] < points.count {
                     let path = CGMutablePath()
                     path.move(to: points[triangles[i]].cgPoint)
