@@ -22,6 +22,18 @@
 		8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */; };
 		8F5DEECB23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
 		8F5DEECC23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
+		8F5DEEDA23FEF10800F3AB3E /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED523FEF10800F3AB3E /* Polygon.swift */; };
+		8F5DEEDB23FEF10800F3AB3E /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED523FEF10800F3AB3E /* Polygon.swift */; };
+		8F5DEEDC23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */; };
+		8F5DEEDD23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */; };
+		8F5DEEDE23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */; };
+		8F5DEEDF23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */; };
+		8F5DEEE023FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */; };
+		8F5DEEE123FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */; };
+		8F5DEEE223FEF10800F3AB3E /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED923FEF10800F3AB3E /* Edge.swift */; };
+		8F5DEEE323FEF10800F3AB3E /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED923FEF10800F3AB3E /* Edge.swift */; };
+		8F5DEEE523FEF10D00F3AB3E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */; };
+		8F5DEEE623FEF10D00F3AB3E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +52,12 @@
 		8F5DEEBF23FEF0FA00F3AB3E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8F5DEEC223FEF0FA00F3AB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F5DEEC423FEF0FA00F3AB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F5DEED523FEF10800F3AB3E /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
+		8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonPartitioner.swift; sourceTree = "<group>"; };
+		8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonotonePolygonAlgorithm.Vertex.swift; sourceTree = "<group>"; };
+		8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonotoneTriangulation.swift; sourceTree = "<group>"; };
+		8F5DEED923FEF10800F3AB3E /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +91,7 @@
 		8F5DEEA023FEF0F700F3AB3E /* MonotoneTriangulator Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8F5DEEE723FEF11200F3AB3E /* Triangulation */,
 				8F5DEEA123FEF0F700F3AB3E /* Actions.sks */,
 				8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */,
 				8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */,
@@ -111,6 +130,19 @@
 				8F5DEEC423FEF0FA00F3AB3E /* Info.plist */,
 			);
 			path = "MonotoneTriangulator macOS";
+			sourceTree = "<group>";
+		};
+		8F5DEEE723FEF11200F3AB3E /* Triangulation */ = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */,
+				8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */,
+				8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */,
+				8F5DEED923FEF10800F3AB3E /* Edge.swift */,
+				8F5DEED523FEF10800F3AB3E /* Polygon.swift */,
+				8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */,
+			);
+			path = Triangulation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +250,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5DEEDA23FEF10800F3AB3E /* Polygon.swift in Sources */,
+				8F5DEEE023FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */,
+				8F5DEEE223FEF10800F3AB3E /* Edge.swift in Sources */,
 				8F5DEEC923FEF0FA00F3AB3E /* GameScene.swift in Sources */,
 				8F5DEEAF23FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
 				8F5DEEAD23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
+				8F5DEEDE23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */,
+				8F5DEEE523FEF10D00F3AB3E /* Vector2.swift in Sources */,
+				8F5DEEDC23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +266,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5DEEDB23FEF10800F3AB3E /* Polygon.swift in Sources */,
+				8F5DEEE123FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */,
+				8F5DEEE323FEF10800F3AB3E /* Edge.swift in Sources */,
 				8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */,
 				8F5DEEC023FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
 				8F5DEEBE23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
+				8F5DEEDF23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */,
+				8F5DEEE623FEF10D00F3AB3E /* Vector2.swift in Sources */,
+				8F5DEEDD23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
