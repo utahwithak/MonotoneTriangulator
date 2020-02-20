@@ -12,7 +12,6 @@ class PolygonPartitioner {
 
     private let polygon: Polygon
     private var queue: [MonotonePolygonAlgorithm.Vertex]
-    private var hasSwept = false
     private var helperMap = [Edge: MonotonePolygonAlgorithm.Vertex]()
 
 
@@ -22,18 +21,10 @@ class PolygonPartitioner {
         queue.sort(by: >)
     }
 
-
-    private var currentVertex: MonotonePolygonAlgorithm.Vertex? {
-        return queue.last
-    }
-
-    private func advance() {
-        queue.removeLast()
-    }
-
     func sweep() throws {
         
-        while let v = currentVertex {
+        while !queue.isEmpty {
+            let v = queue.removeLast()
             switch v.event {
             case .Start:
                 handleStart(vertex: v)
@@ -46,7 +37,6 @@ class PolygonPartitioner {
             case .Regular:
                 try handleRegular(vertex: v)
             }
-            advance()
         }
     }
 

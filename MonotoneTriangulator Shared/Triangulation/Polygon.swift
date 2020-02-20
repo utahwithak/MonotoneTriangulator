@@ -104,15 +104,7 @@ struct Polygon {
     }
 
     var eventPoints: [MonotonePolygonAlgorithm.Vertex] {
-        var points = [MonotonePolygonAlgorithm.Vertex]()
-        var runner = startEdge
-        repeat {
-            points.append(runner.start)
-            runner = runner.next
-
-        } while runner != startEdge
-        return points
-
+        return vertices
     }
 
     var startEdges: [Edge] {
