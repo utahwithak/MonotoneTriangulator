@@ -108,7 +108,7 @@ class PolygonPartitioner {
     }
 
     private func handleRegular(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
-        if v.lowerThan(v.outEdge.pair.next.pair.start) {
+        if v > v.outEdge.pair.next.pair.start {
             handleLeftSide(vertex:v)
         } else {
             try handleRightSide(vertex: v)
