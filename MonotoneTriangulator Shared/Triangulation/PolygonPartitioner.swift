@@ -8,12 +8,11 @@
 
 import Foundation
 
-class PolygonPartitioner {
+struct PolygonPartitioner {
 
     private let polygon: Polygon
     private var queue: [MonotonePolygonAlgorithm.Vertex]
     private var helperMap = [Edge: MonotonePolygonAlgorithm.Vertex]()
-
 
     init(polygon: Polygon) {
         self.polygon = polygon
@@ -21,10 +20,9 @@ class PolygonPartitioner {
         queue.sort(by: >)
     }
 
-    func sweep() throws {
-        
-        while !queue.isEmpty {
-            let v = queue.removeLast()
+    mutating func sweep() throws {
+        for i in stride(from: queue.count - 1, through: 0, by: -1) {
+            let v = queue[i]
             switch v.event {
             case .Start:
                 handleStart(vertex: v)
@@ -44,11 +42,11 @@ class PolygonPartitioner {
         return polygon.subPolygons
     }
 
-    private func handleStart(vertex v:MonotonePolygonAlgorithm.Vertex) {
+    private mutating  func handleStart(vertex v:MonotonePolygonAlgorithm.Vertex) {
         set(helper: v, for: v.outEdge)
     }
 
-    private func handleEnd(vertex v:MonotonePolygonAlgorithm.Vertex) {
+    private mutating func handleEnd(vertex v:MonotonePolygonAlgorithm.Vertex) {
         let helper = helperFor(edge:v.outEdge.pair.next.pair)
         if helper.event == .Merge {
             polygon.addDiagonalFrom(start:v, toVertex:helper)
@@ -56,14 +54,14 @@ class PolygonPartitioner {
         remove(edge: v.outEdge.pair.next.pair)
     }
 
-    private func handleSplit(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
+    private mutating  func handleSplit(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
         let ej = try edgeOnLeft(of: v)
         polygon.addDiagonalFrom(start: v, toVertex: helperFor(edge: ej))
         set(helper: v, for: ej)
         set(helper: v, for: v.outEdge)
     }
 
-    private func handleMerge(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
+    private mutating func handleMerge(vertex v:MonotonePolygonAlgorithm.Vertex) throws {
 
         var helper = helperFor(edge: v.outEdge.pair.next.pair)
         if helper.event == .Merge {
@@ -79,7 +77,7 @@ class PolygonPartitioner {
         set(helper: v, for: ej)
     }
 
-    private func handleLeftSide(vertex v: MonotonePolygonAlgorithm.Vertex) {
+    private mutating func handleLeftSide(vertex v: MonotonePolygonAlgorithm.Vertex) {
         let helper = helperFor(edge: v.outEdge.pair.next.pair)
         if helper.event == .Merge {
             polygon.addDiagonalFrom(start:v, toVertex:helper)
@@ -88,7 +86,7 @@ class PolygonPartitioner {
         set(helper: v, for: v.outEdge)
     }
 
-    private func handleRightSide(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
+    private mutating func handleRightSide(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
         let ej = try edgeOnLeft(of: v)
         let leftHelper = helperFor(edge: ej)
         if leftHelper.event == .Merge {
@@ -97,7 +95,7 @@ class PolygonPartitioner {
         set(helper: v, for: ej)
     }
 
-    private func handleRegular(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
+    private mutating func handleRegular(vertex v: MonotonePolygonAlgorithm.Vertex) throws {
         if v > v.outEdge.pair.next.pair.start {
             handleLeftSide(vertex:v)
         } else {
@@ -105,7 +103,7 @@ class PolygonPartitioner {
         }
     }
 
-    private func set(helper: MonotonePolygonAlgorithm.Vertex, for edge: Edge) {
+    private mutating func set(helper: MonotonePolygonAlgorithm.Vertex, for edge: Edge) {
         helperMap[edge] = helper
     }
 
@@ -113,7 +111,7 @@ class PolygonPartitioner {
         return helperMap[edge]!
     }
 
-    private func remove(edge: Edge) {
+    private mutating func remove(edge: Edge) {
         helperMap.removeValue(forKey: edge)
     }
 

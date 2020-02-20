@@ -11,14 +11,14 @@ import Foundation
 class MonotonePolygonAlgorithm {
 
     let polygon: Polygon
-    let partitioner: PolygonPartitioner
 
     init(points: [Vector2]) {
         polygon = Polygon(points: points)
-        partitioner = PolygonPartitioner(polygon: polygon)
     }
 
     func triangulate() throws -> [Int] {
+        var partitioner = PolygonPartitioner(polygon: polygon)
+
         try partitioner.sweep()
 
         let subPolygons = partitioner.monotonePolygons
