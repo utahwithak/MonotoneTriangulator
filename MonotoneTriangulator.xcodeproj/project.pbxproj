@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F5DEEAD23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEAC23FEF0FA00F3AB3E /* AppDelegate.swift */; };
+		8F5DEEAF23FEF0FA00F3AB3E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEAE23FEF0FA00F3AB3E /* GameViewController.swift */; };
+		8F5DEEB223FEF0FA00F3AB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEB023FEF0FA00F3AB3E /* Main.storyboard */; };
+		8F5DEEB523FEF0FA00F3AB3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEB323FEF0FA00F3AB3E /* LaunchScreen.storyboard */; };
+		8F5DEEBE23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEBD23FEF0FA00F3AB3E /* AppDelegate.swift */; };
+		8F5DEEC023FEF0FA00F3AB3E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEBF23FEF0FA00F3AB3E /* GameViewController.swift */; };
+		8F5DEEC323FEF0FA00F3AB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEC123FEF0FA00F3AB3E /* Main.storyboard */; };
+		8F5DEEC523FEF0FA00F3AB3E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA123FEF0F700F3AB3E /* Actions.sks */; };
+		8F5DEEC623FEF0FA00F3AB3E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA123FEF0F700F3AB3E /* Actions.sks */; };
+		8F5DEEC723FEF0FA00F3AB3E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */; };
+		8F5DEEC823FEF0FA00F3AB3E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */; };
+		8F5DEEC923FEF0FA00F3AB3E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */; };
+		8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */; };
+		8F5DEECB23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
+		8F5DEECC23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8F5DEEA123FEF0F700F3AB3E /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F5DEEA923FEF0FA00F3AB3E /* MonotoneTriangulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonotoneTriangulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F5DEEAC23FEF0FA00F3AB3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8F5DEEAE23FEF0FA00F3AB3E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		8F5DEEB123FEF0FA00F3AB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F5DEEB423FEF0FA00F3AB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F5DEEB623FEF0FA00F3AB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F5DEEBB23FEF0FA00F3AB3E /* MonotoneTriangulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonotoneTriangulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F5DEEBD23FEF0FA00F3AB3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8F5DEEBF23FEF0FA00F3AB3E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		8F5DEEC223FEF0FA00F3AB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F5DEEC423FEF0FA00F3AB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F5DEEA623FEF0FA00F3AB3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F5DEEB823FEF0FA00F3AB3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F5DEE9B23FEF0F700F3AB3E = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEA023FEF0F700F3AB3E /* MonotoneTriangulator Shared */,
+				8F5DEEAB23FEF0FA00F3AB3E /* MonotoneTriangulator iOS */,
+				8F5DEEBC23FEF0FA00F3AB3E /* MonotoneTriangulator macOS */,
+				8F5DEEAA23FEF0FA00F3AB3E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F5DEEA023FEF0F700F3AB3E /* MonotoneTriangulator Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEA123FEF0F700F3AB3E /* Actions.sks */,
+				8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */,
+				8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */,
+				8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */,
+			);
+			path = "MonotoneTriangulator Shared";
+			sourceTree = "<group>";
+		};
+		8F5DEEAA23FEF0FA00F3AB3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEA923FEF0FA00F3AB3E /* MonotoneTriangulator.app */,
+				8F5DEEBB23FEF0FA00F3AB3E /* MonotoneTriangulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F5DEEAB23FEF0FA00F3AB3E /* MonotoneTriangulator iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEAC23FEF0FA00F3AB3E /* AppDelegate.swift */,
+				8F5DEEAE23FEF0FA00F3AB3E /* GameViewController.swift */,
+				8F5DEEB023FEF0FA00F3AB3E /* Main.storyboard */,
+				8F5DEEB323FEF0FA00F3AB3E /* LaunchScreen.storyboard */,
+				8F5DEEB623FEF0FA00F3AB3E /* Info.plist */,
+			);
+			path = "MonotoneTriangulator iOS";
+			sourceTree = "<group>";
+		};
+		8F5DEEBC23FEF0FA00F3AB3E /* MonotoneTriangulator macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8F5DEEBD23FEF0FA00F3AB3E /* AppDelegate.swift */,
+				8F5DEEBF23FEF0FA00F3AB3E /* GameViewController.swift */,
+				8F5DEEC123FEF0FA00F3AB3E /* Main.storyboard */,
+				8F5DEEC423FEF0FA00F3AB3E /* Info.plist */,
+			);
+			path = "MonotoneTriangulator macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F5DEEA823FEF0FA00F3AB3E /* MonotoneTriangulator iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F5DEECF23FEF0FA00F3AB3E /* Build configuration list for PBXNativeTarget "MonotoneTriangulator iOS" */;
+			buildPhases = (
+				8F5DEEA523FEF0FA00F3AB3E /* Sources */,
+				8F5DEEA623FEF0FA00F3AB3E /* Frameworks */,
+				8F5DEEA723FEF0FA00F3AB3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MonotoneTriangulator iOS";
+			productName = "MonotoneTriangulator iOS";
+			productReference = 8F5DEEA923FEF0FA00F3AB3E /* MonotoneTriangulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F5DEEBA23FEF0FA00F3AB3E /* MonotoneTriangulator macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F5DEED223FEF0FA00F3AB3E /* Build configuration list for PBXNativeTarget "MonotoneTriangulator macOS" */;
+			buildPhases = (
+				8F5DEEB723FEF0FA00F3AB3E /* Sources */,
+				8F5DEEB823FEF0FA00F3AB3E /* Frameworks */,
+				8F5DEEB923FEF0FA00F3AB3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MonotoneTriangulator macOS";
+			productName = "MonotoneTriangulator macOS";
+			productReference = 8F5DEEBB23FEF0FA00F3AB3E /* MonotoneTriangulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F5DEE9C23FEF0F700F3AB3E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Datum Apps";
+				TargetAttributes = {
+					8F5DEEA823FEF0FA00F3AB3E = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					8F5DEEBA23FEF0FA00F3AB3E = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 8F5DEE9F23FEF0F700F3AB3E /* Build configuration list for PBXProject "MonotoneTriangulator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F5DEE9B23FEF0F700F3AB3E;
+			productRefGroup = 8F5DEEAA23FEF0FA00F3AB3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F5DEEA823FEF0FA00F3AB3E /* MonotoneTriangulator iOS */,
+				8F5DEEBA23FEF0FA00F3AB3E /* MonotoneTriangulator macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F5DEEA723FEF0FA00F3AB3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F5DEEC723FEF0FA00F3AB3E /* GameScene.sks in Resources */,
+				8F5DEEB223FEF0FA00F3AB3E /* Main.storyboard in Resources */,
+				8F5DEEC523FEF0FA00F3AB3E /* Actions.sks in Resources */,
+				8F5DEEB523FEF0FA00F3AB3E /* LaunchScreen.storyboard in Resources */,
+				8F5DEECB23FEF0FA00F3AB3E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F5DEEB923FEF0FA00F3AB3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F5DEEC323FEF0FA00F3AB3E /* Main.storyboard in Resources */,
+				8F5DEEC823FEF0FA00F3AB3E /* GameScene.sks in Resources */,
+				8F5DEECC23FEF0FA00F3AB3E /* Assets.xcassets in Resources */,
+				8F5DEEC623FEF0FA00F3AB3E /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F5DEEA523FEF0FA00F3AB3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F5DEEC923FEF0FA00F3AB3E /* GameScene.swift in Sources */,
+				8F5DEEAF23FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
+				8F5DEEAD23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F5DEEB723FEF0FA00F3AB3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */,
+				8F5DEEC023FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
+				8F5DEEBE23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8F5DEEB023FEF0FA00F3AB3E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F5DEEB123FEF0FA00F3AB3E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8F5DEEB323FEF0FA00F3AB3E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F5DEEB423FEF0FA00F3AB3E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8F5DEEC123FEF0FA00F3AB3E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F5DEEC223FEF0FA00F3AB3E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F5DEECD23FEF0FA00F3AB3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8F5DEECE23FEF0FA00F3AB3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8F5DEED023FEF0FA00F3AB3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QV4QS82KBT;
+				INFOPLIST_FILE = "MonotoneTriangulator iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.datumapps.MonotoneTriangulator;
+				PRODUCT_NAME = MonotoneTriangulator;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F5DEED123FEF0FA00F3AB3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QV4QS82KBT;
+				INFOPLIST_FILE = "MonotoneTriangulator iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.datumapps.MonotoneTriangulator;
+				PRODUCT_NAME = MonotoneTriangulator;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F5DEED323FEF0FA00F3AB3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QV4QS82KBT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "MonotoneTriangulator macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datumapps.MonotoneTriangulator;
+				PRODUCT_NAME = MonotoneTriangulator;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8F5DEED423FEF0FA00F3AB3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QV4QS82KBT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "MonotoneTriangulator macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datumapps.MonotoneTriangulator;
+				PRODUCT_NAME = MonotoneTriangulator;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F5DEE9F23FEF0F700F3AB3E /* Build configuration list for PBXProject "MonotoneTriangulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F5DEECD23FEF0FA00F3AB3E /* Debug */,
+				8F5DEECE23FEF0FA00F3AB3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F5DEECF23FEF0FA00F3AB3E /* Build configuration list for PBXNativeTarget "MonotoneTriangulator iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F5DEED023FEF0FA00F3AB3E /* Debug */,
+				8F5DEED123FEF0FA00F3AB3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F5DEED223FEF0FA00F3AB3E /* Build configuration list for PBXNativeTarget "MonotoneTriangulator macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F5DEED323FEF0FA00F3AB3E /* Debug */,
+				8F5DEED423FEF0FA00F3AB3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F5DEE9C23FEF0F700F3AB3E /* Project object */;
+}
