@@ -68,25 +68,12 @@ extension MonotonePolygonAlgorithm {
             return angle;
         }
 
-        func lowerThan(_ other: Vertex) -> Bool {
-            let dif = y - other.y
-            let closeEnough = (dif > -1e-6 && dif < 1e-6)
-            if y < other.y && !closeEnough {
-                return true
-            } else if y > other.y && !closeEnough {
-                return false
-            }
-
-            return x > other.x
-        }
-
         lazy var event: EventType = {
             let prev = self.outEdge.pair.next.pair.start;
             let next = self.outEdge.end
 
             let interiorAngle  = self.turnAngle(a:prev, center:self, end:next)
-
-            if prev.lowerThan(self) && next.lowerThan(self) {
+            if prev > self && next > self {
                 if interiorAngle < .pi {
                     return .Start;
                 }
@@ -94,7 +81,7 @@ extension MonotonePolygonAlgorithm {
                     return .Split;
                 }
 
-            } else if self.lowerThan(next) && self.lowerThan(prev){
+            } else if self > next && self > prev {
                 if interiorAngle < .pi {
                     return .End;
                 }
