@@ -15,61 +15,65 @@ enum Orientation {
 
 struct Polygon {
 
-    let startEdge: Edge
+    var edges = [Edge]()
     let vertices: [MonotonePolygonAlgorithm.Vertex]
+    var startEdge = 0
 
     init(points: [Vector2]) {
-        var verts = [MonotonePolygonAlgorithm.Vertex]()
+        // Determine which side should have the initial pointer.
+        //
+        self.vertices = points.enumerated().map({MonotonePolygonAlgorithm.Vertex(point: $0.1, id: $0.0)})
 
-        let initial = MonotonePolygonAlgorithm.Vertex(point: points[0])
-        verts.append(initial)
+        let initial = vertices[0]
+
 
         var start = initial
         for i in 1..<points.count {
-            let end = MonotonePolygonAlgorithm.Vertex(point: points[i])
-            verts.append(end)
-            let e1 = Edge(origin: start)
-            let e2 = Edge(origin: end)
-            end.outEdge = e2
-            e1.pairWith(edge: e2)
-            if let startOut = start.outEdge {
-                e2.next = startOut
-                e2.next.prev = e2
-                e1.prev = startOut.pair
-                e1.prev.next = e1
+            let end = vertices[i]
+            let e1 = Edge(id: edges.count, origin: start.id)
+            edges.append(e1)
+            let e2 = Edge(id: edges.count, origin: end.id)
+            edges.append(e2)
+            end.outEdge = e2.id
+            e1.pairWith(edge: e2, polygon: self)
+            if start.outEdge >= 0 {
+
+                e2.next = start.outEdge
+                edges[e2.next].prev = e2.id
+                e1.prev = edges[start.outEdge].pair
+                edges[e1.prev].next = e1.id
             }
-            start.outEdge = e1
+            start.outEdge = e1.id
             start = end
         }
 
-        let bridge = Edge(origin: initial)
-        let bridgePair = Edge(origin: start)
-        bridge.pairWith(edge: bridgePair)
+        let bridge = Edge(id: edges.count, origin: initial.id)
+        edges.append(bridge)
+        let bridgePair = Edge(id: edges.count, origin: start.id)
+        edges.append(bridgePair)
+        bridge.pairWith(edge: bridgePair, polygon: self)
 
         // Hook up nexts
         //
         bridgePair.next = initial.outEdge
-        initial.outEdge!.prev = bridgePair
+        edges[initial.outEdge].prev = bridgePair.id
 
-        start.outEdge!.prev = bridge;
+        edges[start.outEdge].prev = bridge.id;
         bridge.next = start.outEdge;
 
         // hook up prevs
         //
-        bridge.prev = initial.outEdge!.pair;
-        initial.outEdge!.pair.next = bridge;
+        bridge.prev = edges[initial.outEdge].pair;
+        edges[edges[initial.outEdge].pair].next = bridge.id
 
-        bridgePair.prev = start.outEdge!.pair;
-        start.outEdge!.pair.next = bridgePair;
-        start.outEdge = bridgePair
+        bridgePair.prev = edges[start.outEdge].pair
+        edges[edges[start.outEdge].pair].next = bridgePair.id
+        start.outEdge = bridgePair.id
 
-        // Determine which side should have the initial pointer.
-        //
-        self.vertices = verts
         if Polygon.orientationOf(points: points) == .CounterClockwise {
-            self.startEdge = bridgePair
+            self.startEdge = bridgePair.id
         } else {
-            self.startEdge = bridge
+            self.startEdge = bridge.id
         }
 
         flipOutEdges()
@@ -85,22 +89,29 @@ struct Polygon {
             let Q = points[q]
             A += P.x * Q.y - Q.x * P.y;
         }
-        return  A > 0 ? .CounterClockwise : .Clockwise;
+        return A > 0 ? .CounterClockwise : .Clockwise;
     }
 
     func flipOutEdges() {
-        var runner = self.startEdge;
+        var runner = edges[startEdge];
         repeat {
-            runner.start.outEdge = runner;
-            runner = runner.next;
-        } while runner !== self.startEdge ;
+            vertices[runner.start].outEdge = runner.id;
+            runner = edges[runner.next]
+        } while runner != edges[startEdge]
 
     }
 
-    var startEdges: [Edge] {
+    func next(_ id: Int) -> Int {
+        return edges[id].next
+    }
+    func prev(_ id: Int) -> Int {
+    return edges[id].prev
+    }
+
+    var startEdges: [Int] {
         var toVisit = [startEdge]
-        var visted = Set<Edge>()
-        var startPoints = [Edge]()
+        var visted = Set<Int>()
+        var startPoints = [Int]()
 
         while let start = toVisit.first {
             startPoints.append(start)
@@ -110,11 +121,11 @@ struct Polygon {
 
                 visted.insert(runner);
                 toVisit.removeAll(where: { $0 == runner})
-                if runner.pair != nil && !visted.contains(runner.pair) {
-                    toVisit.append(runner.pair)
+                if edges[runner].pair >= 0 && !visted.contains(edges[runner].pair) {
+                    toVisit.append(edges[runner].pair)
                 }
-                runner = runner.next
-            } while runner !== start;
+                runner = edges[runner].next
+            } while runner != start;
 
         }
         //remove the loop along the outside.
@@ -127,11 +138,10 @@ struct Polygon {
         var triangles = [Int]()
         for e in startEdges {
             var runner = e
-
             repeat {
-                triangles.append(self.vertices.firstIndex(of: runner.start)!)
-                runner = runner.prev
-            } while runner !== e;
+                triangles.append(edges[runner].start)
+                runner = edges[runner].prev
+            } while runner != e;
 
             if triangles.count % 3 != 0 {
                 print("invalid triangulation!!")
@@ -140,17 +150,19 @@ struct Polygon {
         return triangles
     }
 
-    static func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
+    mutating func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
 
-        let e1 = Edge(origin: v1)
-        let e2 = Edge(origin: v2)
-        e1.pairWith(edge: e2)
-        v1.connectNew(edge: e1)
-        v2.connectNew(edge: e2)
+        let e1 = Edge(id: edges.count, origin: v1.id)
+        edges.append(e1)
+        let e2 = Edge(id: edges.count, origin: v2.id)
+        edges.append(e2)
+        e1.pairWith(edge: e2, polygon: self)
+        v1.connectNew(edge: e1, polygon: self)
+        v2.connectNew(edge: e2, polygon: self)
     }
 
     var subPolygons: [SubPolygon] {
-        return startEdges.map({ return SubPolygon(startEdge: $0) })
+        return startEdges.map({ return SubPolygon(startEdge: edges[$0]) })
     }
 
 }
@@ -158,13 +170,13 @@ struct Polygon {
 struct SubPolygon {
     let startEdge: Edge
 
-    func edgeStarting(at start: MonotonePolygonAlgorithm.Vertex) -> Edge? {
+    func edgeStarting(at start: MonotonePolygonAlgorithm.Vertex, polygon: Polygon) -> Edge? {
         var runner = startEdge
         repeat {
-            if runner.start == start {
+            if runner.start == start.id {
                 return runner
             } else {
-                runner = runner.next
+                runner = polygon.edges[runner.next]
             }
         } while runner != startEdge
         return nil

@@ -130,10 +130,9 @@ extension GameScene {
     override func mouseUp(with event: NSEvent) {
         //        self.makeSpinny(at: event.location(in: self), color: SKColor.red)
         if points.count > 3 {
-            let triangulator = MonotonePolygonAlgorithm(points: points)
 
             do {
-                let triangles = try triangulator.triangulate()
+                let triangles = try MonotonePolygonAlgorithm.triangulate(points: points)
                 for i in stride(from: 0, to: triangles.count, by: 3) where i + 2 < triangles.count && triangles[i + 2] < points.count {
                     let path = CGMutablePath()
                     path.move(to: points[triangles[i]].cgPoint)

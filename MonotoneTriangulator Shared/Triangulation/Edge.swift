@@ -9,26 +9,28 @@
 import Foundation
 
 class Edge {
-    var next: Edge!
-    var prev: Edge!
-    var pair: Edge!
-    let start: MonotonePolygonAlgorithm.Vertex
+    var next: Int = -1
+    var prev: Int = -1
+    var pair: Int = -1
 
-    init(origin: MonotonePolygonAlgorithm.Vertex) {
+    let start: Int
+
+    let id: Int
+
+    init(id: Int, origin: Int) {
+        self.id = id
         self.start = origin
-    }
-
-    var end: MonotonePolygonAlgorithm.Vertex {
-        return pair.start
     }
 
     var radAngle: Double = 0
 
-    func pairWith(edge: Edge) {
-        self.pair = edge;
-        edge.pair = self
-        let dy = self.end.y - self.start.y;
-        let dx = self.end.x - self.start.x;
+    func pairWith(edge: Edge, polygon: Polygon) {
+        self.pair = edge.id;
+        edge.pair = self.id
+        let end = polygon.vertices[edge.start]
+        let start = polygon.vertices[self.start]
+        let dy = end.y - start.y;
+        let dx = end.x - start.x;
 
         radAngle = atan2(dy, dx);
         if radAngle < 0 {
@@ -42,52 +44,41 @@ class Edge {
 
     }
 
-    func intersectsLine(at lineY: Double) -> Bool {
-        return (self.start.y >= lineY && self.end.y <= lineY) || (self.start.y <= lineY && self.end.y >= lineY);
+    func intersectsLine(at lineY: Double, polygon: Polygon) -> Bool {
+        let start = polygon.vertices[self.start]
+        let end = polygon.vertices[polygon.edges[pair].start]
+        return (start.y >= lineY && end.y <= lineY) || (start.y <= lineY && end.y >= lineY);
     }
 
-    func leftIntersectionOfLine(at lineY: Double) -> Double {
-        precondition(intersectsLine(at: lineY))
+    func leftIntersectionOfLine(at lineY: Double, polygon: Polygon) -> Double {
 
-        if self.start.y == lineY {
-            if self.end.y == lineY && self.end.x < self.start.x {
-                return self.end.x;
+        let start = polygon.vertices[self.start]
+        let end = polygon.vertices[polygon.edges[pair].start]
+        if start.y == lineY {
+            if end.y == lineY && end.x < start.x {
+                return end.x;
             } else {
-                return self.start.x;
+                return start.x;
             }
         }
-        if self.end.y == lineY {
-            return self.end.x;
+        if end.y == lineY {
+            return end.x;
         }
 
-        let val = self.start.x + (((self.end.x - self.start.x) / (self.end.y - self.start.y) * (lineY - self.start.y)));
+        let val = start.x + (((end.x - start.x) / (end.y - start.y) * (lineY - start.y)));
 
         return val;
     }
 }
 
-extension Edge: CustomStringConvertible {
-
-    var description: String {
-        return "\(start) -> \(end)"
-    }
-}
-
 extension Edge: Equatable {
     static func ==(lhs: Edge, rhs: Edge) -> Bool {
-
-        guard lhs !== rhs else {
-            return true
-        }
-
-        return lhs.start == rhs.start && lhs.end == rhs.end
+        return lhs.id == rhs.id
     }
 }
 
 extension Edge: Hashable {
     func hash(into hasher: inout Hasher) {
-        start.hash(into: &hasher)
-        end.hash(into: &hasher)
+        id.hash(into: &hasher)
     }
-    
 }

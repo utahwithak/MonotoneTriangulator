@@ -19,17 +19,21 @@ extension MonotonePolygonAlgorithm {
 
     class Vertex {
 
-        init(point: Vector2) {
-            self.x = point.x
-            self.y = point.y
-        }
-
         let x: Double
         let y: Double
 
-        var outEdge: Edge!
+        let id: Int
+
+        var outEdge: Int = -1
 
         var isMergeVertex = false
+        
+        init(point: Vector2, id: Int) {
+            self.x = point.x
+            self.y = point.y
+            self.id = id
+        }
+
 
         private func turnAngle(a: Vertex, center b: Vertex, end c: Vertex) -> Double {
             let d1x = b.x - a.x;
@@ -56,9 +60,9 @@ extension MonotonePolygonAlgorithm {
             }
         }
 
-        func generateEvent() -> EventType {
-            let prev = self.outEdge.pair.next.pair.start
-            let next = self.outEdge.end
+        func generateEvent(polygon: Polygon) -> EventType {
+            let prev = polygon.vertices[polygon.edges[polygon.edges[polygon.edges[polygon.edges[outEdge].pair].next].pair].start]
+            let next = polygon.vertices[polygon.edges[polygon.edges[outEdge].pair].start]
 
             let interiorAngle  = self.turnAngle(a:prev, center:self, end:next)
             if prev > self && next > self {
@@ -82,31 +86,33 @@ extension MonotonePolygonAlgorithm {
             return .regular;
         }
 
-        func connectNew(edge: Edge) {
-            guard var runner = self.outEdge else {
+        func connectNew(edge: Edge, polygon: Polygon) {
+            guard outEdge >= 0 else {
                 fatalError("Invalid State!")
             }
+            var runner = polygon.edges[outEdge]
+            
 
             while runner.radAngle > edge.radAngle {
-                runner = runner.pair.next;
-                if runner.radAngle < runner.pair.next.radAngle || runner === runner.pair.next {
+                runner = polygon.edges[polygon.edges[runner.pair].next]
+                if runner.radAngle < polygon.edges[polygon.edges[runner.pair].next].radAngle || runner.id == polygon.edges[runner.pair].next {
                     break;
                 }
             }
 
             while (runner.radAngle < edge.radAngle) {
-                runner = runner.prev.pair;
-                if((runner.radAngle < edge.radAngle && runner.prev.pair.radAngle < runner.radAngle) || runner === runner.prev.pair){
-                    runner = runner.prev.pair;
-                    break;//we just went all the way around!
+                runner = polygon.edges[polygon.edges[runner.prev].pair]
+                if((runner.radAngle < edge.radAngle && polygon.edges[polygon.edges[runner.prev].pair].radAngle < runner.radAngle) || runner.id == polygon.edges[runner.prev].pair){
+                    runner = polygon.edges[polygon.edges[runner.prev].pair]
+                    break//we just went all the way around!
                 }
             }
             //we found the insert location!
-            runner.pair.next.prev = edge.pair;
-            edge.pair.next = runner.pair.next;
+            polygon.edges[polygon.edges[runner.pair].next].prev = edge.pair
+            polygon.edges[edge.pair].next = polygon.edges[runner.pair].next
 
-            runner.pair.next = edge;
-            runner.pair.next = edge;
+            polygon.edges[runner.pair].next = edge.id
+            polygon.edges[runner.pair].next = edge.id
 
             edge.prev = runner.pair;
 

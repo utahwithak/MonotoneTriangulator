@@ -10,16 +10,12 @@ import Foundation
 
 class MonotonePolygonAlgorithm {
 
-    let polygon: Polygon
+   static func triangulate(points: [Vector2]) throws -> [Int] {
 
-    init(points: [Vector2]) {
-        polygon = Polygon(points: points)
-    }
+        var partitioner = PolygonPartitioner(polygon: Polygon(points: points))
 
-    func triangulate() throws -> [Int] {
-        var partitioner = PolygonPartitioner()
-
-        let subPolygons = try partitioner.sweep(polygon: polygon)
+        let subPolygons = try partitioner.sweep()
+        var polygon = partitioner.polygon
 
         var leftChain = [MonotonePolygonAlgorithm.Vertex]()
         var rightChain = [MonotonePolygonAlgorithm.Vertex]()
@@ -31,19 +27,19 @@ class MonotonePolygonAlgorithm {
             var lowest = p.startEdge
             var highest = p.startEdge
 
-            sequenceStarting(at: p.startEdge, sequence: &sequence, highest: &highest, lowest: &lowest)
+            sequenceStarting(at: p.startEdge, in: polygon, sequence: &sequence, highest: &highest, lowest: &lowest)
 
             var runner = highest
             repeat {
-                runner = runner.prev
-                rightChain.append(runner.start)
+                runner = polygon.edges[runner.prev]
+                rightChain.append(polygon.vertices[runner.start])
             } while runner !== lowest;
 
             runner = highest
 
             repeat {
-                leftChain.append(runner.start)
-                runner = runner.next
+                leftChain.append(polygon.vertices[runner.start])
+                runner = polygon.edges[runner.next]
             } while runner !== lowest
 
             stack.append(sequence[0])
@@ -57,7 +53,7 @@ class MonotonePolygonAlgorithm {
 
                         //insert into D a diagonal from U to each popped vertex, except the last one
                         if !stack.isEmpty {
-                            Polygon.addDiagonalFrom(start:u, toVertex:cur)
+                            polygon.addDiagonalFrom(start:u, toVertex:cur)
                         }
                     }
 
@@ -75,7 +71,7 @@ class MonotonePolygonAlgorithm {
 
                         popped = stack.removeLast()
 
-                        Polygon.addDiagonalFrom(start:u, toVertex:popped)
+                        polygon.addDiagonalFrom(start:u, toVertex:popped)
                     }
                     //push last popped back onto stack, as it is now (or always was) connected to
                     stack.append(popped)
@@ -91,7 +87,7 @@ class MonotonePolygonAlgorithm {
                     let cur = stack.removeLast()
                     //insert into D a diagonal from U to each poped vertex, except the last one
                     if !stack.isEmpty {
-                        Polygon.addDiagonalFrom(start: sequence.last!, toVertex: cur)
+                        polygon.addDiagonalFrom(start: sequence.last!, toVertex: cur)
                     }
                 }
             }
@@ -107,7 +103,7 @@ class MonotonePolygonAlgorithm {
     }
 
 
-    private func sideOfPoints(a:Vertex, center b:Vertex, andEnd c:Vertex) -> Int {
+    private static func sideOfPoints(a:Vertex, center b:Vertex, andEnd c:Vertex) -> Int {
         let v1x = b.x-a.x;
         let v1y = b.y-a.y;
 
@@ -117,17 +113,17 @@ class MonotonePolygonAlgorithm {
         return (v1x * v2y) - (v1y * v2x) < 0 ? -1 : 1
     }
 
-    func sequenceStarting(at startEdge: Edge, sequence: inout [MonotonePolygonAlgorithm.Vertex], highest: inout Edge, lowest: inout Edge) {
+    static func sequenceStarting(at startEdge: Edge, in polygon: Polygon, sequence: inout [MonotonePolygonAlgorithm.Vertex], highest: inout Edge, lowest: inout Edge) {
 
         var runner = startEdge
         repeat {
-            if runner.start > lowest.start {
+            if polygon.vertices[runner.start] > polygon.vertices[lowest.start] {
                 lowest = runner
-            } else if runner.start < highest.start {
+            } else if polygon.vertices[runner.start] < polygon.vertices[highest.start] {
                 highest = runner
             }
-            sequence.append(runner.start)
-            runner = runner.next;
+            sequence.append(polygon.vertices[runner.start])
+            runner = polygon.edges[runner.next];
         } while(runner != startEdge);
         sequence.sort()
 
