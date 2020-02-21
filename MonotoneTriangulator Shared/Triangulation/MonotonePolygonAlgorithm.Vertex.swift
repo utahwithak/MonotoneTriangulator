@@ -17,7 +17,7 @@ extension MonotonePolygonAlgorithm {
         case regular
     }
 
-    class Vertex {
+    struct Vertex {
 
         let x: Double
         let y: Double
@@ -60,7 +60,7 @@ extension MonotonePolygonAlgorithm {
             }
         }
 
-        func generateEvent(polygon: Polygon) -> EventType {
+        mutating func generateEvent(polygon: Polygon) -> EventType {
             let prev = polygon.vertices[polygon.edges[polygon.edges[polygon.edges[polygon.edges[outEdge].pair].next].pair].start]
             let next = polygon.vertices[polygon.edges[polygon.edges[outEdge].pair].start]
 

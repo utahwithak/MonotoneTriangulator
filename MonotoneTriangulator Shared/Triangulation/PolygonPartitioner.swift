@@ -21,7 +21,7 @@ struct PolygonPartitioner {
     mutating func sweep() throws -> [SubPolygon] {
         let queue = polygon.vertices.sorted(by: >)
         for i in stride(from: queue.count - 1, through: 0, by: -1) {
-            let v = queue[i]
+            var v = queue[i]
             switch v.generateEvent(polygon: polygon) {
             case .start:
                 handleStart(vertex: v)

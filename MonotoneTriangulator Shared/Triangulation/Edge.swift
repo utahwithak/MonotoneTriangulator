@@ -11,13 +11,14 @@ import Foundation
 class Edge {
     var next: Int = -1
     var prev: Int = -1
-    var pair: Int = -1
-
-    let start: Int
 
     let id: Int
+    let pair: Int
+    let start: Int
 
-    init(id: Int, origin: Int) {
+
+    init(id: Int, pairId: Int, origin: Int) {
+        pair = pairId
         self.id = id
         self.start = origin
     }
@@ -25,8 +26,6 @@ class Edge {
     var radAngle: Double = 0
 
     func pairWith(edge: Edge, polygon: Polygon) {
-        self.pair = edge.id;
-        edge.pair = self.id
         let end = polygon.vertices[edge.start]
         let start = polygon.vertices[self.start]
         let dy = end.y - start.y;
