@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MonotonePolygonAlgorithm {
+struct MonotonePolygonAlgorithm {
 
    static func triangulate(points: [Vector2]) throws -> [Int] {
 

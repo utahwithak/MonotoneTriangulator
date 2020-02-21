@@ -9,9 +9,9 @@
 import Foundation
 
 struct Edge {
+
     var next: Int = -1
     var prev: Int = -1
-
     let id: Int
     let pair: Int
     let start: Int

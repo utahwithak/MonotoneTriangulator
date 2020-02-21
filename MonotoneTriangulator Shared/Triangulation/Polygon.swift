@@ -88,14 +88,6 @@ struct Polygon {
             vertices[runner.start].outEdge = runner.id;
             runner = edges[runner.next]
         } while runner != edges[startEdge]
-
-    }
-
-    func next(_ id: Int) -> Int {
-        return edges[id].next
-    }
-    func prev(_ id: Int) -> Int {
-    return edges[id].prev
     }
 
     var startEdges: [Int] {
@@ -141,7 +133,6 @@ struct Polygon {
     }
 
     mutating func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
-
         let (e1, e2) = createEdges(v1: v1, v2: v2)
         v1.connectNew(edge: edges[e1], polygon: &self)
         v2.connectNew(edge: edges[e2], polygon: &self)
