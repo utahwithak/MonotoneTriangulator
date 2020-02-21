@@ -27,7 +27,7 @@ extension MonotonePolygonAlgorithm {
         let x: Double
         let y: Double
 
-        unowned var outEdge: Edge!
+        var outEdge: Edge!
 
         var isMergeVertex = false
 
@@ -48,16 +48,16 @@ extension MonotonePolygonAlgorithm {
                 d1Ang += .pi * 2
             }
 
-            var angle = d2Ang - d1Ang;
+            let angle = d2Ang - d1Ang;
             if angle < 0 {
-                angle += .pi * 2
+                return  angle + (.pi * 2)
+            } else {
+                return angle;
             }
-
-            return angle;
         }
 
         func generateEvent() -> EventType {
-            let prev = self.outEdge.pair.next.pair.start;
+            let prev = self.outEdge.pair.next.pair.start
             let next = self.outEdge.end
 
             let interiorAngle  = self.turnAngle(a:prev, center:self, end:next)
@@ -115,26 +115,16 @@ extension MonotonePolygonAlgorithm {
     }
 }
 
-extension MonotonePolygonAlgorithm.Vertex: CustomStringConvertible {
-    var description: String {
-        return "(\(x), \(y))"
-    }
-}
-
 extension MonotonePolygonAlgorithm.Vertex: Hashable {
     func hash(into hasher: inout Hasher) {
         x.hash(into: &hasher)
         y.hash(into: &hasher)
-
     }
 }
 
 extension MonotonePolygonAlgorithm.Vertex: Comparable {
 
     public static func ==(lhs: MonotonePolygonAlgorithm.Vertex, rhs: MonotonePolygonAlgorithm.Vertex) -> Bool {
-//        guard lhs !== rhs else {
-//            return true
-//        }
         let yDif = lhs.y - rhs.y
         let xDif = lhs.x - rhs.x
         return (yDif > -1e-6 && yDif < 1e-6) && ( xDif > -1e-6 && xDif < 1e-6)
