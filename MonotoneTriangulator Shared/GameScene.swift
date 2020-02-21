@@ -62,7 +62,7 @@ class GameScene: SKScene {
         if let last = points.last {
             let dx = Double(pos.x) - last.x
             let dy = Double(pos.y) - last.y
-            if sqrt((dx * dx) + (dy * dy) ) < 50 {
+            if sqrt((dx * dx) + (dy * dy) ) < 1 {
                 addPoint = false
             }
         }

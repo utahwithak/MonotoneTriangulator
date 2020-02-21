@@ -34,7 +34,6 @@ extension MonotonePolygonAlgorithm {
             self.id = id
         }
 
-
         private func turnAngle(a: Vertex, center b: Vertex, end c: Vertex) -> Double {
             let d1x = b.x - a.x;
             let d1y = b.y - a.y;

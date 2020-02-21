@@ -27,13 +27,9 @@ struct Polygon {
         var start = vertices[0].id
         for i in 1..<points.count {
             let end = vertices[i]
-            let eId = edges.count
-            let e1 = Edge(id: eId, pairId: eId + 1,  origin: start)
-            let e2 = Edge(id: eId + 1, pairId: eId, origin: end.id)
-            edges.append(e1)
-            edges.append(e2)
+            let (e1, e2) = createEdges(v1: vertices[start], v2: vertices[end.id])
             vertices[i].outEdge = e2.id
-            e1.pairWith(edge: e2, polygon: self)
+
             if vertices[start].outEdge >= 0 {
 
                 e2.next = vertices[start].outEdge
@@ -44,12 +40,8 @@ struct Polygon {
             vertices[start].outEdge = e1.id
             start = end.id
         }
-        let eId = edges.count
-        let bridge = Edge(id: eId, pairId: eId + 1, origin: 0)
-        edges.append(bridge)
-        let bridgePair = Edge(id: eId + 1, pairId: eId, origin: start)
-        edges.append(bridgePair)
-        bridge.pairWith(edge: bridgePair, polygon: self)
+
+        let (bridge, bridgePair) = createEdges(v1: vertices[0], v2: vertices[start])
 
         // Hook up nexts
         //
@@ -149,15 +141,32 @@ struct Polygon {
     }
 
     mutating func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
-        let eId = edges.count
 
-        let e1 = Edge(id: eId, pairId: eId + 1, origin: v1.id)
-        let e2 = Edge(id: eId + 1, pairId: eId, origin: v2.id)
-        edges.append(e1)
-        edges.append(e2)
-        e1.pairWith(edge: e2, polygon: self)
+        let (e1, e2) = createEdges(v1: v1, v2: v2)
         v1.connectNew(edge: e1, polygon: self)
         v2.connectNew(edge: e2, polygon: self)
+    }
+
+    mutating func createEdges(v1: MonotonePolygonAlgorithm.Vertex, v2: MonotonePolygonAlgorithm.Vertex) -> (Edge, Edge){
+        let dy = v2.y - v1.y;
+        let dx = v2.x - v1.x;
+
+        var e1Angle = atan2(dy, dx);
+        if e1Angle < 0 {
+             e1Angle += .pi * 2
+        }
+
+        var e2Angle = e1Angle - .pi
+        if e2Angle < 0 {
+            e2Angle += .pi * 2
+        }
+
+        let eId = edges.count
+        let e1 = Edge(id: eId, pairId: eId + 1, origin: v1.id, angle: e1Angle)
+        let e2 = Edge(id: eId + 1, pairId: eId, origin: v2.id, angle: e2Angle)
+        edges.append(e1)
+        edges.append(e2)
+        return (e1, e2)
     }
 
     var subPolygons: [SubPolygon] {

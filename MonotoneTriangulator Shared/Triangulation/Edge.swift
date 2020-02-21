@@ -15,32 +15,13 @@ class Edge {
     let id: Int
     let pair: Int
     let start: Int
+    let radAngle: Double
 
-
-    init(id: Int, pairId: Int, origin: Int) {
+    init(id: Int, pairId: Int, origin: Int, angle: Double) {
         pair = pairId
         self.id = id
-        self.start = origin
-    }
-
-    var radAngle: Double = 0
-
-    func pairWith(edge: Edge, polygon: Polygon) {
-        let end = polygon.vertices[edge.start]
-        let start = polygon.vertices[self.start]
-        let dy = end.y - start.y;
-        let dx = end.x - start.x;
-
-        radAngle = atan2(dy, dx);
-        if radAngle < 0 {
-             radAngle += .pi * 2
-        }
-
-        edge.radAngle = radAngle - .pi
-        if edge.radAngle < 0 {
-            edge.radAngle += .pi * 2
-        }
-
+        start = origin
+        radAngle = angle
     }
 
     func intersectsLine(at lineY: Double, polygon: Polygon) -> Bool {
