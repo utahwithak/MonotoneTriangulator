@@ -28,16 +28,16 @@ struct Polygon {
         for i in 1..<points.count {
             let end = vertices[i]
             let (e1, e2) = createEdges(v1: vertices[start], v2: vertices[end.id])
-            vertices[i].outEdge = e2.id
+            vertices[i].outEdge = e2
 
             if vertices[start].outEdge >= 0 {
 
-                e2.next = vertices[start].outEdge
-                edges[e2.next].prev = e2.id
-                e1.prev = edges[vertices[start].outEdge].pair
-                edges[e1.prev].next = e1.id
+                edges[e2].next = vertices[start].outEdge
+                edges[edges[e2].next].prev = e2
+                edges[e1].prev = edges[vertices[start].outEdge].pair
+                edges[edges[e1].prev].next = e1
             }
-            vertices[start].outEdge = e1.id
+            vertices[start].outEdge = e1
             start = end.id
         }
 
@@ -45,25 +45,25 @@ struct Polygon {
 
         // Hook up nexts
         //
-        bridgePair.next = vertices[0].outEdge
-        edges[vertices[0].outEdge].prev = bridgePair.id
+        edges[bridgePair].next = vertices[0].outEdge
+        edges[vertices[0].outEdge].prev = bridgePair
 
-        edges[vertices[start].outEdge].prev = bridge.id;
-        bridge.next = vertices[start].outEdge;
+        edges[vertices[start].outEdge].prev = bridge
+        edges[bridge].next = vertices[start].outEdge
 
         // hook up prevs
         //
-        bridge.prev = edges[vertices[0].outEdge].pair;
-        edges[edges[vertices[0].outEdge].pair].next = bridge.id
+        edges[bridge].prev = edges[vertices[0].outEdge].pair
+        edges[edges[vertices[0].outEdge].pair].next = bridge
 
-        bridgePair.prev = edges[vertices[start].outEdge].pair
-        edges[edges[vertices[start].outEdge].pair].next = bridgePair.id
-        vertices[start].outEdge = bridgePair.id
+        edges[bridgePair].prev = edges[vertices[start].outEdge].pair
+        edges[edges[vertices[start].outEdge].pair].next = bridgePair
+        vertices[start].outEdge = bridgePair
 
         if Polygon.orientationOf(points: points) == .CounterClockwise {
-            self.startEdge = bridgePair.id
+            self.startEdge = bridgePair
         } else {
-            self.startEdge = bridge.id
+            self.startEdge = bridge
         }
 
         flipOutEdges()
@@ -143,11 +143,11 @@ struct Polygon {
     mutating func addDiagonalFrom(start v1: MonotonePolygonAlgorithm.Vertex, toVertex v2: MonotonePolygonAlgorithm.Vertex) {
 
         let (e1, e2) = createEdges(v1: v1, v2: v2)
-        v1.connectNew(edge: e1, polygon: self)
-        v2.connectNew(edge: e2, polygon: self)
+        v1.connectNew(edge: edges[e1], polygon: &self)
+        v2.connectNew(edge: edges[e2], polygon: &self)
     }
 
-    mutating func createEdges(v1: MonotonePolygonAlgorithm.Vertex, v2: MonotonePolygonAlgorithm.Vertex) -> (Edge, Edge){
+    mutating func createEdges(v1: MonotonePolygonAlgorithm.Vertex, v2: MonotonePolygonAlgorithm.Vertex) -> (Int, Int){
         let dy = v2.y - v1.y;
         let dx = v2.x - v1.x;
 
@@ -166,7 +166,7 @@ struct Polygon {
         let e2 = Edge(id: eId + 1, pairId: eId, origin: v2.id, angle: e2Angle)
         edges.append(e1)
         edges.append(e2)
-        return (e1, e2)
+        return (eId, eId + 1)
     }
 
     var subPolygons: [SubPolygon] {

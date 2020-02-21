@@ -85,7 +85,7 @@ extension MonotonePolygonAlgorithm {
             return .regular;
         }
 
-        func connectNew(edge: Edge, polygon: Polygon) {
+        func connectNew(edge: Edge, polygon: inout Polygon) {
             guard outEdge >= 0 else {
                 fatalError("Invalid State!")
             }
@@ -113,7 +113,7 @@ extension MonotonePolygonAlgorithm {
             polygon.edges[runner.pair].next = edge.id
             polygon.edges[runner.pair].next = edge.id
 
-            edge.prev = runner.pair;
+            polygon.edges[edge.id].prev = runner.pair;
 
         }
 

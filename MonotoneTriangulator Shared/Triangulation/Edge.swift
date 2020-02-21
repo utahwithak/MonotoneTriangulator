@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Edge {
+struct Edge {
     var next: Int = -1
     var prev: Int = -1
 

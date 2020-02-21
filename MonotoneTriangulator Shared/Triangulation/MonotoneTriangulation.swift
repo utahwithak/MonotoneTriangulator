@@ -33,14 +33,14 @@ class MonotonePolygonAlgorithm {
             repeat {
                 runner = polygon.edges[runner.prev]
                 rightChain.append(polygon.vertices[runner.start])
-            } while runner !== lowest;
+            } while runner != lowest;
 
             runner = highest
 
             repeat {
                 leftChain.append(polygon.vertices[runner.start])
                 runner = polygon.edges[runner.next]
-            } while runner !== lowest
+            } while runner != lowest
 
             stack.append(sequence[0])
             stack.append(sequence[1])
