@@ -22,31 +22,24 @@ class Edge {
         return pair.start
     }
 
-    lazy var radAngle: Double = {
-        var dy = self.end.y - self.start.y;
-        var dx = self.end.x - self.start.x;
-        if dx < 1e-7 && dx > -1e-7 {
-            dx = 0
-        }
-        if dy < 1e-7 && dy > -1e-7 {
-            dy = 0
-        }
-        let radians = atan2(dy, dx);
-        return radians
-    }()
-
-    lazy var degreeAngle: Double = {
-        var degrees = self.radAngle * 180.0 / .pi;
-        if degrees < 0 {
-            degrees += 360
-        }
-        return degrees
-
-    }()
+    var radAngle: Double = 0
 
     func pairWith(edge: Edge) {
         self.pair = edge;
         edge.pair = self
+        let dy = self.end.y - self.start.y;
+        let dx = self.end.x - self.start.x;
+
+        radAngle = atan2(dy, dx);
+        if radAngle < 0 {
+             radAngle += .pi * 2
+        }
+
+        edge.radAngle = radAngle - .pi
+        if edge.radAngle < 0 {
+            edge.radAngle += .pi * 2
+        }
+
     }
 
     func intersectsLine(at lineY: Double) -> Bool {

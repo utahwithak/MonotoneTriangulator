@@ -15,6 +15,9 @@ enum Orientation {
 
 struct Polygon {
 
+    let startEdge: Edge
+    let vertices: [MonotonePolygonAlgorithm.Vertex]
+
     init(points: [Vector2]) {
         var verts = [MonotonePolygonAlgorithm.Vertex]()
 
@@ -62,15 +65,14 @@ struct Polygon {
 
         // Determine which side should have the initial pointer.
         //
-
+        self.vertices = verts
         if Polygon.orientationOf(points: points) == .CounterClockwise {
-            self.init(startEdge: bridgePair, vertices: verts)
+            self.startEdge = bridgePair
         } else {
-            self.init(startEdge: bridge, vertices: verts)
+            self.startEdge = bridge
         }
 
         flipOutEdges()
-
 
     }
 
@@ -86,14 +88,6 @@ struct Polygon {
         return  A > 0 ? .CounterClockwise : .Clockwise;
     }
 
-    private init(startEdge: Edge, vertices: [MonotonePolygonAlgorithm.Vertex]) {
-        self.startEdge = startEdge
-        self.vertices = vertices
-    }
-
-    let startEdge: Edge
-    var vertices: [MonotonePolygonAlgorithm.Vertex]
-
     func flipOutEdges() {
         var runner = self.startEdge;
         repeat {
@@ -101,10 +95,6 @@ struct Polygon {
             runner = runner.next;
         } while runner !== self.startEdge ;
 
-    }
-
-    var eventPoints: [MonotonePolygonAlgorithm.Vertex] {
-        return vertices
     }
 
     var startEdges: [Edge] {

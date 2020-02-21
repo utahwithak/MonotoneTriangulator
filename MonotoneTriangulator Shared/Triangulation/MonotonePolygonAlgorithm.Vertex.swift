@@ -41,7 +41,7 @@ extension MonotonePolygonAlgorithm {
         let x: Double
         let y: Double
 
-        var outEdge: Edge!
+        unowned var outEdge: Edge!
 
         var isMergeVertex = false
 
@@ -88,7 +88,7 @@ extension MonotonePolygonAlgorithm {
                     return .End;
                 }
                 else if interiorAngle > .pi {
-                    self.isMergeVertex = true
+                    isMergeVertex = true
                     return .Merge;
                 }
 
@@ -110,22 +110,18 @@ extension MonotonePolygonAlgorithm {
 
         func connectNew(edge: Edge) {
             guard var runner = self.outEdge else {
-
-                self.outEdge = edge;
-                self.outEdge!.prev = self.outEdge!.pair;
-                self.outEdge!.pair.next = self.outEdge;
-                return
+                fatalError("Invalid State!")
             }
 
-            while runner.degreeAngle > edge.degreeAngle {
+            while runner.radAngle > edge.radAngle {
                 runner = runner.pair.next;
-                if runner.degreeAngle < runner.pair.next.degreeAngle || runner === runner.pair.next {
+                if runner.radAngle < runner.pair.next.radAngle || runner === runner.pair.next {
                     break;
                 }
             }
-            while (runner.degreeAngle < edge.degreeAngle) {
+            while (runner.radAngle < edge.radAngle) {
                 runner = runner.prev.pair;
-                if((runner.degreeAngle < edge.degreeAngle && runner.prev.pair.degreeAngle < runner.degreeAngle) || runner === runner.prev.pair){
+                if((runner.radAngle < edge.radAngle && runner.prev.pair.radAngle < runner.radAngle) || runner === runner.prev.pair){
                     runner = runner.prev.pair;
                     break;//we just went all the way around!
                 }
@@ -161,9 +157,9 @@ extension MonotonePolygonAlgorithm.Vertex: Hashable {
 extension MonotonePolygonAlgorithm.Vertex: Comparable {
 
     public static func ==(lhs: MonotonePolygonAlgorithm.Vertex, rhs: MonotonePolygonAlgorithm.Vertex) -> Bool {
-        guard lhs !== rhs else {
-            return true
-        }
+//        guard lhs !== rhs else {
+//            return true
+//        }
         let yDif = lhs.y - rhs.y
         let xDif = lhs.x - rhs.x
         return (yDif > -1e-6 && yDif < 1e-6) && ( xDif > -1e-6 && xDif < 1e-6)

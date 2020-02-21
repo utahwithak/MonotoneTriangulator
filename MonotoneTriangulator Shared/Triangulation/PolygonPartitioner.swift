@@ -13,7 +13,7 @@ struct PolygonPartitioner {
     private var helperMap = [Edge: MonotonePolygonAlgorithm.Vertex]()
 
     mutating func sweep(polygon: Polygon) throws -> [SubPolygon] {
-        let queue = polygon.eventPoints.sorted(by: >)
+        let queue = polygon.vertices.sorted(by: >)
         for i in stride(from: queue.count - 1, through: 0, by: -1) {
             let v = queue[i]
             switch v.generateEvent() {
@@ -32,8 +32,7 @@ struct PolygonPartitioner {
         return polygon.subPolygons
     }
 
-
-    private mutating  func handleStart(vertex v:MonotonePolygonAlgorithm.Vertex) {
+    private mutating func handleStart(vertex v:MonotonePolygonAlgorithm.Vertex) {
         set(helper: v, for: v.outEdge)
     }
 
