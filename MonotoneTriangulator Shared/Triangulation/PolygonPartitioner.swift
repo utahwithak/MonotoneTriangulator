@@ -17,15 +17,15 @@ struct PolygonPartitioner {
         for i in stride(from: queue.count - 1, through: 0, by: -1) {
             let v = queue[i]
             switch v.generateEvent() {
-            case .Start:
+            case .start:
                 handleStart(vertex: v)
-            case .End:
+            case .end:
                 try handleEnd(vertex: v)
-            case .Split:
+            case .split:
                 try handleSplit(vertex: v)
-            case .Merge:
+            case .merge:
                 try handleMerge(vertex: v)
-            case .Regular:
+            case .regular:
                 try handleRegular(vertex: v)
             }
         }
@@ -98,26 +98,31 @@ struct PolygonPartitioner {
     }
 
     private func helperFor(edge: Edge) throws -> MonotonePolygonAlgorithm.Vertex {
-        guard let edge =  helperMap[edge] else {
+        guard let edge = helperMap[edge] else {
             throw TriangulationError.InvalidPolygon
         }
         return edge
     }
 
     private mutating func remove(edge: Edge) {
-        helperMap.removeValue(forKey: edge)
+        helperMap[edge] = nil
     }
 
     private func edgeOnLeft(of v: MonotonePolygonAlgorithm.Vertex) throws -> Edge {
-        let edgesAtY = helperMap.keys.filter {
-            return $0.intersectsLine(at: v.y) && $0.leftIntersectionOfLine(at: v.y) < v.x
+        let onLeft = helperMap.keys.reduce(nil) { (partial, edge) -> Edge? in
+
+            if edge.intersectsLine(at: v.y) && edge.leftIntersectionOfLine(at: v.y) < v.x {
+                if let curMin = partial {
+                    return curMin.leftIntersectionOfLine(at: v.y) < edge.leftIntersectionOfLine(at: v.y) ? edge : curMin
+                } else {
+                    return edge
+                }
+            } else {
+                return partial
+            }
         }
 
-        let sorted = edgesAtY.sorted { edge1, edge2 in
-            return edge1.leftIntersectionOfLine(at: v.y) < edge2.leftIntersectionOfLine(at: v.y)
-        }
-
-        guard let last = sorted.last else {
+        guard let last = onLeft else {
             throw TriangulationError.InvalidPolygon
         }
         return last

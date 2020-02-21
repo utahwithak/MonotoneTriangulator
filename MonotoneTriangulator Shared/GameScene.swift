@@ -58,10 +58,21 @@ class GameScene: SKScene {
     #endif
 
     func makeSpinny(at pos: CGPoint, color: SKColor) {
-        let node = SKShapeNode(circleOfRadius: 3)
-        node.position = pos
-        addChild(node)
-        points.append(Vector2(pos))
+        var addPoint = true
+        if let last = points.last {
+            let dx = Double(pos.x) - last.x
+            let dy = Double(pos.y) - last.y
+            if sqrt((dx * dx) + (dy * dy) ) < 50 {
+                addPoint = false
+            }
+        }
+
+        if addPoint {
+            let node = SKShapeNode(circleOfRadius: 3)
+            node.position = pos
+            addChild(node)
+            points.append(Vector2(pos))
+        }
 
     }
     

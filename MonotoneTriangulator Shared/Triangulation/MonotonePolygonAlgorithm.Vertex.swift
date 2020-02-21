@@ -10,25 +10,11 @@ import Foundation
 
 extension MonotonePolygonAlgorithm {
     enum EventType {
-        case Start
-        case End
-        case Split
-        case Merge
-        case Regular
-        var description: String {
-            switch self {
-            case .Start:
-                return "Start";
-            case .End:
-                return "End";
-            case .Split:
-                return "Split";
-            case .Merge:
-                return "Merge";
-            case .Regular:
-                return "Regular";
-            }
-        }
+        case start
+        case end
+        case split
+        case merge
+        case regular
     }
 
     class Vertex {
@@ -62,11 +48,11 @@ extension MonotonePolygonAlgorithm {
                 d1Ang += .pi * 2
             }
 
-
             var angle = d2Ang - d1Ang;
             if angle < 0 {
                 angle += .pi * 2
             }
+
             return angle;
         }
 
@@ -77,35 +63,23 @@ extension MonotonePolygonAlgorithm {
             let interiorAngle  = self.turnAngle(a:prev, center:self, end:next)
             if prev > self && next > self {
                 if interiorAngle < .pi {
-                    return .Start;
+                    return .start;
                 }
                 else if interiorAngle > .pi {
-                    return .Split;
+                    return .split;
                 }
 
             } else if self > next && self > prev {
                 if interiorAngle < .pi {
-                    return .End;
+                    return .end;
                 }
                 else if interiorAngle > .pi {
                     isMergeVertex = true
-                    return .Merge;
+                    return .merge;
                 }
 
             }
-            return .Regular;
-        }
-
-        func edgeTo(vertext end: Vertex) -> Edge? {
-            var runner = outEdge
-            repeat {
-                if runner?.end == end {
-                    return runner
-                }
-                runner = runner?.pair.next;
-
-            } while runner != nil && runner !== outEdge;
-            return nil
+            return .regular;
         }
 
         func connectNew(edge: Edge) {
@@ -119,6 +93,7 @@ extension MonotonePolygonAlgorithm {
                     break;
                 }
             }
+
             while (runner.radAngle < edge.radAngle) {
                 runner = runner.prev.pair;
                 if((runner.radAngle < edge.radAngle && runner.prev.pair.radAngle < runner.radAngle) || runner === runner.prev.pair){

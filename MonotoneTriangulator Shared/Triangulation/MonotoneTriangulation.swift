@@ -21,16 +21,17 @@ class MonotonePolygonAlgorithm {
 
         let subPolygons = try partitioner.sweep(polygon: polygon)
 
-        var sequence = [MonotonePolygonAlgorithm.Vertex]()
         var leftChain = [MonotonePolygonAlgorithm.Vertex]()
         var rightChain = [MonotonePolygonAlgorithm.Vertex]()
         var stack = [MonotonePolygonAlgorithm.Vertex]()
-        
+        var sequence = [MonotonePolygonAlgorithm.Vertex]()
+
         for p in subPolygons {
-            sequenceStarting(at: p.startEdge, sequence: &sequence)
-            guard let lowest = p.edgeStarting(at: sequence.last!), let highest = p.edgeStarting(at: sequence.first!) else {
-                fatalError("Start not on list!")
-            }
+
+            var lowest = p.startEdge
+            var highest = p.startEdge
+
+            sequenceStarting(at: p.startEdge, sequence: &sequence, highest: &highest, lowest: &lowest)
 
             var runner = highest
             repeat {
@@ -51,11 +52,11 @@ class MonotonePolygonAlgorithm {
                 let u = sequence[i]
 
                 if (leftChain.contains(u) && !leftChain.contains(stack.last!)) || (rightChain.contains(u) && !rightChain.contains(stack.last!)){
-                    while stack.count != 0 {
+                    while !stack.isEmpty {
                         let cur = stack.removeLast()
 
-                        //inserte into D a diagonal from U to each popped vertex, except the last one
-                        if stack.count > 0 {
+                        //insert into D a diagonal from U to each popped vertex, except the last one
+                        if !stack.isEmpty {
                             Polygon.addDiagonalFrom(start:u, toVertex:cur)
                         }
                     }
@@ -64,14 +65,13 @@ class MonotonePolygonAlgorithm {
                     stack.append(sequence[i-1])
                     stack.append(u)
 
-                }
-                else{
+                } else {
                     //Pop One vertext from S
                     var popped = stack.removeLast()
 
 
                     //pop the other vertices from S as long as the diagonals from u to them are inside P
-                    while stack.count > 0 && sideOfPoints(a:stack.last!, center:popped, andEnd:u) == (leftChain.contains(u) ? 1 : -1)  {
+                    while !stack.isEmpty && sideOfPoints(a: stack.last!, center:popped, andEnd:u) == (leftChain.contains(u) ? 1 : -1)  {
 
                         popped = stack.removeLast()
 
@@ -84,18 +84,16 @@ class MonotonePolygonAlgorithm {
                 }
 
             }
-            if stack.count > 0 {
-                _ = stack.removeLast()
 
-                while stack.count != 0 {
+            if !stack.isEmpty {
+                _ = stack.removeLast()
+                while !stack.isEmpty {
                     let cur = stack.removeLast()
                     //insert into D a diagonal from U to each poped vertex, except the last one
-                    if stack.count > 0 {
-                        Polygon.addDiagonalFrom(start:sequence.last!, toVertex:cur)
+                    if !stack.isEmpty {
+                        Polygon.addDiagonalFrom(start: sequence.last!, toVertex: cur)
                     }
                 }
-
-
             }
 
 
@@ -118,14 +116,19 @@ class MonotonePolygonAlgorithm {
 
         return (v1x * v2y) - (v1y * v2x) < 0 ? -1 : 1
     }
-    func sequenceStarting(at startEdge: Edge, sequence: inout [Vertex]) {
+
+    func sequenceStarting(at startEdge: Edge, sequence: inout [MonotonePolygonAlgorithm.Vertex], highest: inout Edge, lowest: inout Edge) {
 
         var runner = startEdge
         repeat {
+            if runner.start > lowest.start {
+                lowest = runner
+            } else if runner.start < highest.start {
+                highest = runner
+            }
             sequence.append(runner.start)
             runner = runner.next;
-        }while(runner != startEdge);
-
+        } while(runner != startEdge);
         sequence.sort()
 
     }
