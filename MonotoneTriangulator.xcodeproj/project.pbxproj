@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F078BC7240462D1000E0FD0 /* TriangulationAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8F078BC6240462D1000E0FD0 /* TriangulationAlgorithms */; };
+		8F078BCA240462DC000E0FD0 /* TriangulationAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8F078BC9240462DC000E0FD0 /* TriangulationAlgorithms */; };
 		8F5DEEAD23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEAC23FEF0FA00F3AB3E /* AppDelegate.swift */; };
 		8F5DEEAF23FEF0FA00F3AB3E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEAE23FEF0FA00F3AB3E /* GameViewController.swift */; };
 		8F5DEEB223FEF0FA00F3AB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEB023FEF0FA00F3AB3E /* Main.storyboard */; };
@@ -22,18 +24,6 @@
 		8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */; };
 		8F5DEECB23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
 		8F5DEECC23FEF0FA00F3AB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F5DEEA423FEF0FA00F3AB3E /* Assets.xcassets */; };
-		8F5DEEDA23FEF10800F3AB3E /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED523FEF10800F3AB3E /* Polygon.swift */; };
-		8F5DEEDB23FEF10800F3AB3E /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED523FEF10800F3AB3E /* Polygon.swift */; };
-		8F5DEEDC23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */; };
-		8F5DEEDD23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */; };
-		8F5DEEDE23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */; };
-		8F5DEEDF23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */; };
-		8F5DEEE023FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */; };
-		8F5DEEE123FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */; };
-		8F5DEEE223FEF10800F3AB3E /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED923FEF10800F3AB3E /* Edge.swift */; };
-		8F5DEEE323FEF10800F3AB3E /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEED923FEF10800F3AB3E /* Edge.swift */; };
-		8F5DEEE523FEF10D00F3AB3E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */; };
-		8F5DEEE623FEF10D00F3AB3E /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,12 +42,6 @@
 		8F5DEEBF23FEF0FA00F3AB3E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8F5DEEC223FEF0FA00F3AB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F5DEEC423FEF0FA00F3AB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F5DEED523FEF10800F3AB3E /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
-		8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonPartitioner.swift; sourceTree = "<group>"; };
-		8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonotonePolygonAlgorithm.Vertex.swift; sourceTree = "<group>"; };
-		8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonotoneTriangulation.swift; sourceTree = "<group>"; };
-		8F5DEED923FEF10800F3AB3E /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
-		8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F078BCA240462DC000E0FD0 /* TriangulationAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +57,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F078BC7240462D1000E0FD0 /* TriangulationAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F078BC8240462DC000E0FD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8F5DEE9B23FEF0F700F3AB3E = {
 			isa = PBXGroup;
 			children = (
@@ -85,13 +78,13 @@
 				8F5DEEAB23FEF0FA00F3AB3E /* MonotoneTriangulator iOS */,
 				8F5DEEBC23FEF0FA00F3AB3E /* MonotoneTriangulator macOS */,
 				8F5DEEAA23FEF0FA00F3AB3E /* Products */,
+				8F078BC8240462DC000E0FD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8F5DEEA023FEF0F700F3AB3E /* MonotoneTriangulator Shared */ = {
 			isa = PBXGroup;
 			children = (
-				8F5DEEE723FEF11200F3AB3E /* Triangulation */,
 				8F5DEEA123FEF0F700F3AB3E /* Actions.sks */,
 				8F5DEEA223FEF0F700F3AB3E /* GameScene.sks */,
 				8F5DEEA323FEF0F700F3AB3E /* GameScene.swift */,
@@ -132,19 +125,6 @@
 			path = "MonotoneTriangulator macOS";
 			sourceTree = "<group>";
 		};
-		8F5DEEE723FEF11200F3AB3E /* Triangulation */ = {
-			isa = PBXGroup;
-			children = (
-				8F5DEEE423FEF10D00F3AB3E /* Vector2.swift */,
-				8F5DEED823FEF10800F3AB3E /* MonotoneTriangulation.swift */,
-				8F5DEED723FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift */,
-				8F5DEED923FEF10800F3AB3E /* Edge.swift */,
-				8F5DEED523FEF10800F3AB3E /* Polygon.swift */,
-				8F5DEED623FEF10800F3AB3E /* PolygonPartitioner.swift */,
-			);
-			path = Triangulation;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,6 +141,9 @@
 			dependencies = (
 			);
 			name = "MonotoneTriangulator iOS";
+			packageProductDependencies = (
+				8F078BC9240462DC000E0FD0 /* TriangulationAlgorithms */,
+			);
 			productName = "MonotoneTriangulator iOS";
 			productReference = 8F5DEEA923FEF0FA00F3AB3E /* MonotoneTriangulator.app */;
 			productType = "com.apple.product-type.application";
@@ -178,6 +161,9 @@
 			dependencies = (
 			);
 			name = "MonotoneTriangulator macOS";
+			packageProductDependencies = (
+				8F078BC6240462D1000E0FD0 /* TriangulationAlgorithms */,
+			);
 			productName = "MonotoneTriangulator macOS";
 			productReference = 8F5DEEBB23FEF0FA00F3AB3E /* MonotoneTriangulator.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +195,9 @@
 				Base,
 			);
 			mainGroup = 8F5DEE9B23FEF0F700F3AB3E;
+			packageReferences = (
+				8F078BC5240462D1000E0FD0 /* XCRemoteSwiftPackageReference "SwiftTriangulationAlgorithms" */,
+			);
 			productRefGroup = 8F5DEEAA23FEF0FA00F3AB3E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -250,15 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F5DEEDA23FEF10800F3AB3E /* Polygon.swift in Sources */,
-				8F5DEEE023FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */,
-				8F5DEEE223FEF10800F3AB3E /* Edge.swift in Sources */,
 				8F5DEEC923FEF0FA00F3AB3E /* GameScene.swift in Sources */,
 				8F5DEEAF23FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
 				8F5DEEAD23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
-				8F5DEEDE23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */,
-				8F5DEEE523FEF10D00F3AB3E /* Vector2.swift in Sources */,
-				8F5DEEDC23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,15 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F5DEEDB23FEF10800F3AB3E /* Polygon.swift in Sources */,
-				8F5DEEE123FEF10800F3AB3E /* MonotoneTriangulation.swift in Sources */,
-				8F5DEEE323FEF10800F3AB3E /* Edge.swift in Sources */,
 				8F5DEECA23FEF0FA00F3AB3E /* GameScene.swift in Sources */,
 				8F5DEEC023FEF0FA00F3AB3E /* GameViewController.swift in Sources */,
 				8F5DEEBE23FEF0FA00F3AB3E /* AppDelegate.swift in Sources */,
-				8F5DEEDF23FEF10800F3AB3E /* MonotonePolygonAlgorithm.Vertex.swift in Sources */,
-				8F5DEEE623FEF10D00F3AB3E /* Vector2.swift in Sources */,
-				8F5DEEDD23FEF10800F3AB3E /* PolygonPartitioner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +508,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F078BC5240462D1000E0FD0 /* XCRemoteSwiftPackageReference "SwiftTriangulationAlgorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:utahwithak/SwiftTriangulationAlgorithms.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F078BC6240462D1000E0FD0 /* TriangulationAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F078BC5240462D1000E0FD0 /* XCRemoteSwiftPackageReference "SwiftTriangulationAlgorithms" */;
+			productName = TriangulationAlgorithms;
+		};
+		8F078BC9240462DC000E0FD0 /* TriangulationAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F078BC5240462D1000E0FD0 /* XCRemoteSwiftPackageReference "SwiftTriangulationAlgorithms" */;
+			productName = TriangulationAlgorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F5DEE9C23FEF0F700F3AB3E /* Project object */;
 }

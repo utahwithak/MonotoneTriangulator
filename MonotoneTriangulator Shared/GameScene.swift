@@ -7,10 +7,11 @@
 //
 
 import SpriteKit
+import TriangulationAlgorithms
 
 class GameScene: SKScene {
 
-    var points = [Vector2]()
+    var points = [CGPoint]()
 
 
     fileprivate var spinnyNode : SKShapeNode?
@@ -60,8 +61,8 @@ class GameScene: SKScene {
     func makeSpinny(at pos: CGPoint, color: SKColor) {
         var addPoint = true
         if let last = points.last {
-            let dx = Double(pos.x) - last.x
-            let dy = Double(pos.y) - last.y
+            let dx = pos.x - last.x
+            let dy = pos.y - last.y
             if sqrt((dx * dx) + (dy * dy) ) < 0.5 {
                 addPoint = false
             }
@@ -71,7 +72,7 @@ class GameScene: SKScene {
             let node = SKShapeNode(circleOfRadius: 3)
             node.position = pos
             addChild(node)
-            points.append(Vector2(pos))
+            points.append(pos)
         }
 
     }
@@ -135,9 +136,9 @@ extension GameScene {
                 let triangles = try MonotonePolygonAlgorithm.triangulate(points: points)
                 for i in stride(from: 0, to: triangles.count, by: 3) where i + 2 < triangles.count && triangles[i + 2] < points.count {
                     let path = CGMutablePath()
-                    path.move(to: points[triangles[i]].cgPoint)
-                    path.addLine(to: points[triangles[i + 1]].cgPoint)
-                    path.addLine(to: points[triangles[i + 2]].cgPoint)
+                    path.move(to: points[triangles[i]])
+                    path.addLine(to: points[triangles[i + 1]])
+                    path.addLine(to: points[triangles[i + 2]])
                     path.closeSubpath()
                     let line = SKShapeNode(path: path)
                     addChild(line)
