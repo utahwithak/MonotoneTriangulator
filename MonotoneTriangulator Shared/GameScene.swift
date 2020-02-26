@@ -13,6 +13,7 @@ class GameScene: SKScene {
 
     var points = [CGPoint]()
 
+    var monotone = false
 
     fileprivate var spinnyNode : SKShapeNode?
 
@@ -63,7 +64,7 @@ class GameScene: SKScene {
         if let last = points.last {
             let dx = pos.x - last.x
             let dy = pos.y - last.y
-            if sqrt((dx * dx) + (dy * dy) ) < 0.5 {
+            if sqrt((dx * dx) + (dy * dy) ) < 100 {
                 addPoint = false
             }
         }
@@ -133,7 +134,30 @@ extension GameScene {
         if points.count > 3 {
 
             do {
-                let triangles = try MonotonePolygonAlgorithm.triangulate(points: points)
+
+                let triangles: [Int]
+                if monotone || event.modifierFlags.contains(.command) {
+                    triangles = try MonotonePolygonAlgorithm.triangulate(points: points)
+                } else {
+                    var io = TriangulateIO()
+                    io.pointlist = points
+                    var behavior = Behavior()
+                    //        behavior.verbose = true
+                    //        behavior.convex = true
+                    behavior.dwyer = true
+                    behavior.usesegments = true
+                    behavior.poly = true
+
+                    io.segmentlist = [Int](repeating: 0, count: io.pointlist.count * 2)
+                    for  i in 0..<io.pointlist.count {
+                        io.segmentlist[i * 2] = i
+                        io.segmentlist[(i * 2) + 1] = i + 1
+                    }
+                    io.segmentlist[ io.pointlist.count * 2 - 1] = 0
+                    let out = Triangulator.triangulate(b: behavior, inArgs: io)
+                    self.points = out.pointlist.map { CGPoint(x: $0.x, y: $0.y) }
+                    triangles = out.trianglelist
+                }
                 for i in stride(from: 0, to: triangles.count, by: 3) where i + 2 < triangles.count && triangles[i + 2] < points.count {
                     let path = CGMutablePath()
                     path.move(to: points[triangles[i]])

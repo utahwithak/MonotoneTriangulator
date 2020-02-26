@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E62943E6-452C-4E71-8FFD-ECB026D9A129"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9630BBFA-4288-4FB1-BB4A-4A478B424C84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/GameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "mouseUp(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9630BBFA-4288-4FB1-BB4A-4A478B424C84 - 6e74f1d48ec49b2e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MonotoneTriangulator.GameScene.mouseUp(with: __C.NSEvent) -&gt; ()"
+                  moduleName = "MonotoneTriangulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carl8382/Projects/Triangulation%20Stuff/MonotoneTriangulator/MonotoneTriangulator%20Shared/GameScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "2750">
+               </Location>
+               <Location
+                  uuid = "9630BBFA-4288-4FB1-BB4A-4A478B424C84 - 6e74f1d48ec49b2e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MonotoneTriangulator.GameScene.mouseUp(with: __C.NSEvent) -&gt; ()"
+                  moduleName = "MonotoneTriangulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carl8382/Projects/Triangulation%20Stuff/MonotoneTriangulator/MonotoneTriangulator%20Shared/GameScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "2879">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA866FD3-2B93-4C5F-B064-C4DD8F65740A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/MonotonePolygonAlgorithm.Vertex.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "&lt;(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C7C5C87-8215-4EBE-9FB9-462FBFA61244"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/MonotonePolygonAlgorithm.Vertex.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "&lt;(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B3BA3CD-3B8A-4D46-B1A5-2E3FA5B3CEC5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/Polygon.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "edgeStarting(at:polygon:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B3BA3CD-3B8A-4D46-B1A5-2E3FA5B3CEC5 - 65b46224052631d6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MonotoneTriangulator.Polygon.subPolygons.getter : Swift.Array&lt;MonotoneTriangulator.SubPolygon&gt;"
+                  moduleName = "MonotoneTriangulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carl8382/Projects/Triangulation%20Stuff/MonotoneTriangulator/MonotoneTriangulator%20Shared/Triangulation/Polygon.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "4B3BA3CD-3B8A-4D46-B1A5-2E3FA5B3CEC5 - f3b2336ac4209c22"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MonotoneTriangulator.Edge) -&gt; MonotoneTriangulator.SubPolygon in MonotoneTriangulator.Polygon.subPolygons.getter : Swift.Array&lt;MonotoneTriangulator.SubPolygon&gt;"
+                  moduleName = "MonotoneTriangulator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carl8382/Projects/Triangulation%20Stuff/MonotoneTriangulator/MonotoneTriangulator%20Shared/Triangulation/Polygon.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55F63174-705A-4CE7-BCFA-5F4F629A041F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/MonotonePolygonAlgorithm.Vertex.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "turnAngle(a:center:end:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9108E265-C917-4610-94E4-6C0680CDAADC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/PolygonPartitioner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "remove(edge:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3B5A0DE2-AEA7-490E-8057-628599707536"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonotoneTriangulator Shared/Triangulation/MonotoneTriangulation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "triangulate(points:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

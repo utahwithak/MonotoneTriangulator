@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TriangulationAlgorithms",
+        "repositoryURL": "git@github.com:utahwithak/SwiftTriangulationAlgorithms.git",
+        "state": {
+          "branch": "master",
+          "revision": "1625f88a42722edc9eef043dfb76a9ef8523ecd3",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
